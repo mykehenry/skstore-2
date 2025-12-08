@@ -64,7 +64,7 @@
         .nav-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -81,9 +81,16 @@
         }
 
         .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
+            display: none;
+        position: absolute;
+        top: 100%; /* Coloca abaixo da navbar */
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        flex-direction: column; /* Empilha os itens */
+        padding: 20px 32px;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
 
         .nav-link {
@@ -545,17 +552,17 @@
 
         /* Responsividade */
         .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 24px;
-            cursor: pointer;
+display: none; /* Padrão: Escondido no desktop */
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 24px;
+    cursor: pointer;
         }
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                display: block; /* Mostra o botão de menu */
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -631,6 +638,37 @@
             color: var(--accent-color);
             font-size: 32px;
         }
+        .valores-grid, .sobre-features, .stats-grid, .hero-cta-group {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .processo-timeline::before {
+        left: 30px; /* Move a linha do tempo para a esquerda */
+    }
+
+    .processo-step {
+        grid-template-columns: 60px 1fr;
+        gap: 20px;
+    }
+
+    .processo-step:nth-child(even) .step-content:first-child {
+        order: initial; /* Desativa a reordenação para simplificar no mobile */
+    }
+    
+    .step-content:hover {
+        transform: none; /* Remove a animação de deslize lateral no hover do mobile */
+    }
+
+    .hero-cta-group .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .hero-content {
+        padding: 0 20px; /* Garante que o texto não toque nas bordas */
+    }
+}
 
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
